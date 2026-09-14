@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "callback": "tsx src/callbackVersion.ts",
+  "promise": "tsx src/promiseVersion.ts",
+  "async": "tsx src/asyncAwaitVersion.ts"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
