@@ -1,9 +1,10 @@
 {
   "name": "async-weather-news-dashboard",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
-  "scripts": {
+ "scripts": {
   "callback": "tsx src/callbackVersion.ts",
   "promise": "tsx src/promiseVersion.ts",
   "async": "tsx src/asyncAwaitVersion.ts"
@@ -11,10 +12,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "devDependencies": {
-    "@types/node": "^26.5.1",
-    "tsx": "^4.23.13",
+  "dependencies": {
+    "@types/node": "^26.4.1",
     "typescript": "^7.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "tsx": "^4.23.13"
   }
 }
