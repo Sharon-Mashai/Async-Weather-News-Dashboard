@@ -224,12 +224,6 @@ Display
 
 `Promise.all()` starts the weather and news requests together and waits for both to complete.
 
-```text
-        ┌─ Weather ─┐
-Start ──┤           ├── Display
-        └─ News ────┘
-```
-
 ### Promise.race()
 
 `Promise.race()` starts both requests and returns whichever one settles first.
@@ -274,21 +268,19 @@ Command
 Enter your location: Polokwane
 
 CALLBACK VERSION
-====================
 
 WEATHER - POLOKWANE
 Current Temperature: 20.3°C
 Minimum Temperature: 13.6°C
 Maximum Temperature: 28°C
 
-====================
 NEWS HEADLINES
 1. His mother had always taught him
 2. He was an expert but not in a discipline
 3. Dave watched as the forest burned up on the hill.
 4. All he wanted was a candy bar.
 5. Hopes and dreams were dashed that day.
-====================
+
 ```
 
 Weather values may change because the data is fetched from an external weather API.
@@ -299,9 +291,9 @@ Weather values may change because the data is fetched from an external weather A
 
 ```text
 Enter your location: Polokwane
+========================
 
 PROMISE CHAINING
-========================
 
 WEATHER - POLOKWANE
 Current Temperature: 20.3°C
@@ -317,7 +309,6 @@ NEWS HEADLINES
 
 ========================
 PROMISE.ALL
-========================
 
 WEATHER - POLOKWANE
 Current Temperature: 20.3°C
@@ -333,7 +324,6 @@ NEWS HEADLINES
 
 ========================
 PROMISE.RACE
-========================
 
 FASTEST RESPONSE
 WEATHER - POLOKWANE
@@ -341,7 +331,6 @@ Current Temperature: 20.3°C
 Minimum Temperature: 13.6°C
 Maximum Temperature: 28°C
 
-========================
 ```
 
 The `Promise.race()` result may change between runs because it returns whichever request settles first.
@@ -354,21 +343,19 @@ The `Promise.race()` result may change between runs because it returns whichever
 Enter your location: Cape Town
 
 ASYNC/AWAIT VERSION
-====================
 
 WEATHER - CAPE TOWN
 Current Temperature: 18.4°C
 Minimum Temperature: 12.2°C
 Maximum Temperature: 21.7°C
 
-====================
 NEWS HEADLINES
 1. His mother had always taught him
 2. He was an expert but not in a discipline
 3. Dave watched as the forest burned up on the hill.
 4. All he wanted was a candy bar.
 5. Hopes and dreams were dashed that day.
-====================
+
 ```
 
 The temperatures shown above are sample values. Actual values depend on the weather returned by the API.
