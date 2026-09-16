@@ -64,10 +64,14 @@ The project includes consistent error handling for failed API requests or invali
 
 The following screenshots show the project outputs
 
+## Callback Version
+![CallBack Version](./assets/callbackVersion.png)
 
-![CallBack Vesrion](./assets)
-![Promise Version](./assets)
-![Async/Await Version](./assets)
+## Promise Version
+![Promise Version](./assets/PromiseVersion.png)
+
+## Async/Await Version
+![Async/Await Version](./assets/asyncAwaitVersion.png)
 
 
 ---
