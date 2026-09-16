@@ -1,62 +1,116 @@
 # Async Weather & News Dashboard
 
-A Node.js and TypeScript project that demonstrates different ways of handling asynchronous programming in JavaScript/TypeScript.
+A Node.js and TypeScript project that demonstrates asynchronous programming using **Callbacks, Promises, and Async/Await**.
 
-The application fetches:
+The application allows the user to enter a location in the terminal. It then finds the coordinates of that location, fetches weather information, and displays news/post headlines.
 
-- Weather information for Polokwane
-- Current temperature
-- Minimum temperature
-- Maximum temperature
-- Five news/post headlines
+---
 
-The project demonstrates three asynchronous programming approaches:
+## Project Overview
 
-1. Callbacks
-2. Promises
-3. Async/Await
+The Async Weather & News Dashboard demonstrates how asynchronous operations can be handled using different approaches in TypeScript.
 
-It also demonstrates `Promise.all()` and `Promise.race()`.
+The same functionality is implemented using:
+
+* Callbacks
+* Promises
+* Async/Await
+
+The Promise version also demonstrates:
+
+* Promise chaining
+* `Promise.all()`
+* `Promise.race()`
+
+The project includes consistent error handling for failed API requests or invalid locations.
 
 ---
 
 ## Features
 
-- Fetch weather data from Open-Meteo
-- Fetch post headlines from DummyJSON
-- Display current temperature
-- Display minimum temperature
-- Display maximum temperature
-- Display five headlines
-- Callback implementation
-- Promise implementation
-- Async/Await implementation
-- Promise chaining
-- `Promise.all()`
-- `Promise.race()`
-- Error handling
-- Readable terminal output
+* Prompt the user to enter a location
+* Convert the location into latitude and longitude
+* Fetch weather data for the entered location
+* Display the current temperature
+* Display the minimum temperature
+* Display the maximum temperature
+* Fetch five post headlines
+* Callback implementation
+* Promise implementation
+* Async/Await implementation
+* Promise chaining
+* `Promise.all()`
+* `Promise.race()`
+* Error handling
+* TypeScript interfaces
+* Readable terminal output
 
 ---
 
 ## Technologies Used
 
-- Node.js
-- TypeScript
-- tsx
-- Node.js HTTPS module
-- Open-Meteo API
-- DummyJSON Posts API
+* Node.js
+* TypeScript
+* tsx
+* Node.js HTTPS module
+* Node.js Readline module
+* Open-Meteo API
+* Open-Meteo Geocoding API
+* DummyJSON Posts API
 
 ---
 
+## Screenshots
+
+The following screenshots show the project outputs
 
 
-## Getting Started
+![CallBack Vesrion](./assets)
+![Promise Version](./assets)
+![Async/Await Version](./assets)
 
-Follow these steps to run the project after cloning it from GitHub.
 
-### 1. Clone the Repository
+---
+
+## How the Application Works
+
+When the application starts, the user is asked to enter a location.
+
+For example:
+
+```text
+Enter your location: Polokwane
+```
+
+The application then follows this process:
+
+```text
+User enters location
+        ↓
+Open-Meteo Geocoding API
+        ↓
+Latitude and Longitude
+        ↓
+Open-Meteo Weather API
+        ↓
+Weather Data
+        ↓
+DummyJSON Posts API
+        ↓
+News/Post Headlines
+        ↓
+Display Results
+```
+
+The geocoding API is needed because the weather API requires latitude and longitude coordinates.
+
+---
+
+# Getting Started
+
+Follow the steps below to run the project after cloning it from GitHub.
+
+## 1. Clone the Repository
 
 Open a terminal and run:
 
@@ -64,98 +118,160 @@ Open a terminal and run:
 git clone <your-repository-url>
 ```
 
-Replace `<your-repository-url>` with the URL of your GitHub repository.
+Replace `<your-repository-url>` with the URL of this GitHub repository.
 
-Example:
+---
 
-```bash
-git clone https://github.com/your-username/Async-Weather-News-Dashboard.git
-```
-
-### 2. Navigate Into the Project
+## 2. Navigate Into the Project
 
 ```bash
 cd Async-Weather-News-Dashboard
 ```
 
-### 3. Install Dependencies
+---
 
-Run:
+## 3. Install Dependencies
+
+Install the project dependencies:
 
 ```bash
 npm install
 ```
 
-This installs all the dependencies listed in `package.json`, including TypeScript and tsx.
+This installs the packages listed in `package.json`, including TypeScript and tsx.
 
-### 4. Run the Callback Version
+---
+
+## 4. Run the Callback Version
+
+Run:
 
 ```bash
 npm run callback
 ```
 
-This runs:
+The application will ask:
 
 ```text
-src/callbackVersion.ts
+Enter your location:
 ```
 
-The callback version demonstrates asynchronous programming using callback functions.
+Enter a location, for example:
 
-The news request is performed inside the weather callback to demonstrate nested callbacks.
+```text
+Enter your location: Polokwane
+```
 
-### 5. Run the Promise Version
+The Callback version uses callback functions to handle the asynchronous operations.
+
+The process is:
+
+```text
+Enter Location
+      ↓
+Find Coordinates
+      ↓
+Fetch Weather
+      ↓
+Fetch News
+      ↓
+Display Results
+```
+
+The nested callbacks also demonstrate how callback nesting can occur when asynchronous operations depend on one another.
+
+---
+
+## 5. Run the Promise Version
+
+Run:
 
 ```bash
 npm run promise
 ```
 
-This runs:
+Then enter a location:
 
 ```text
-src/promiseVersion.ts
+Enter your location: Cape Town
 ```
 
 The Promise version demonstrates:
 
-- Promise chaining
-- `Promise.all()`
-- `Promise.race()`
+* Promise chaining
+* `Promise.all()`
+* `Promise.race()`
+
+### Promise Chaining
+
+Promise chaining runs asynchronous operations in sequence.
+
+```text
+Location
+   ↓
+Weather
+   ↓
+News
+   ↓
+Display
+```
+
+### Promise.all()
 
 `Promise.all()` starts the weather and news requests together and waits for both to complete.
 
-`Promise.race()` returns the result of whichever request completes first.
+```text
+        ┌─ Weather ─┐
+Start ──┤           ├── Display
+        └─ News ────┘
+```
 
-### 6. Run the Async/Await Version
+### Promise.race()
+
+`Promise.race()` starts both requests and returns whichever one settles first.
+
+The fastest response can therefore be either the weather or the news.
+
+---
+
+## 6. Run the Async/Await Version
+
+Run:
 
 ```bash
 npm run async
 ```
 
-This runs:
+Then enter a location:
 
 ```text
-src/asyncAwaitVersion.ts
+Enter your location: Durban
 ```
 
-This version uses `async` and `await` to make asynchronous code easier to read.
+The Async/Await version uses `async` and `await` to make asynchronous code easier to read.
 
 It also uses `try...catch` for error handling.
 
 ---
 
 ## NPM Commands
-Commands          
-- `npm install` -Installs project dependencies
+
+Command 
+- `npm install` - Installs the project dependencies 
 - `npm run callback` - Runs the Callback version    
-- `npm run promise`- Runs the Promise version     
-- `npm run async`  - Runs the Async/Await version  
+- `npm run promise`- Runs the Promise version 
+- `npm run async` - Runs the Async/Await version 
 
 ---
 
 ## Sample Callback Output
 
 ```text
+Enter your location: Polokwane
+
+CALLBACK VERSION
+====================
+
 WEATHER - POLOKWANE
 Current Temperature: 20.3°C
 Minimum Temperature: 13.6°C
@@ -168,15 +284,18 @@ NEWS HEADLINES
 3. Dave watched as the forest burned up on the hill.
 4. All he wanted was a candy bar.
 5. Hopes and dreams were dashed that day.
+====================
 ```
 
-The temperature values may change because the weather data is fetched from an API.
+Weather values may change because the data is fetched from an external weather API.
 
 ---
 
 ## Sample Promise Output
 
 ```text
+Enter your location: Polokwane
+
 PROMISE CHAINING
 ========================
 
@@ -213,6 +332,7 @@ PROMISE.RACE
 ========================
 
 FASTEST RESPONSE
+WEATHER - POLOKWANE
 Current Temperature: 20.3°C
 Minimum Temperature: 13.6°C
 Maximum Temperature: 28°C
@@ -220,20 +340,22 @@ Maximum Temperature: 28°C
 ========================
 ```
 
-The result of `Promise.race()` may be different between runs because it returns whichever asynchronous request completes first.
+The `Promise.race()` result may change between runs because it returns whichever request settles first.
 
 ---
 
 ## Sample Async/Await Output
 
 ```text
-ASYNC/AWAIT VERSION
-===================
+Enter your location: Cape Town
 
-WEATHER - POLOKWANE
-Current Temperature: 20.3°C
-Minimum Temperature: 13.6°C
-Maximum Temperature: 28°C
+ASYNC/AWAIT VERSION
+====================
+
+WEATHER - CAPE TOWN
+Current Temperature: 18.4°C
+Minimum Temperature: 12.2°C
+Maximum Temperature: 21.7°C
 
 ====================
 NEWS HEADLINES
@@ -242,7 +364,32 @@ NEWS HEADLINES
 3. Dave watched as the forest burned up on the hill.
 4. All he wanted was a candy bar.
 5. Hopes and dreams were dashed that day.
+====================
 ```
+
+The temperatures shown above are sample values. Actual values depend on the weather returned by the API.
+
+---
+
+## TypeScript Types
+
+The project contains:
+
+```text
+src/types.ts
+```
+
+This file defines TypeScript interfaces for the data returned by the APIs.
+
+The types include:
+
+* `Location`
+* `GeocodingData`
+* `WeatherData`
+* `Post`
+* `NewsData`
+
+Using interfaces helps define the expected structure of the API responses and improves type safety.
 
 ---
 
@@ -254,41 +401,67 @@ The project uses a shared error-handling function located in:
 src/errorHandler.ts
 ```
 
-The function displays readable error messages when something goes wrong.
+This keeps error messages consistent across the Callback, Promise, and Async/Await versions.
 
-For example:
+Examples include:
+
+```text
+Error: Location not found.
+```
+
+```text
+Error: Failed to fetch location data.
+```
 
 ```text
 Error: Failed to fetch weather data.
 ```
 
-or:
-
 ```text
 Error: Failed to fetch news data.
 ```
 
-This keeps error handling consistent between the Callback, Promise, and Async/Await implementations.
+If the user does not enter a location, the application displays:
+
+```text
+Error: Please enter a location.
+```
 
 ---
 
 ## APIs Used
 
-### Open-Meteo
+### Open-Meteo Geocoding API
 
-Open-Meteo is used to retrieve weather information for Polokwane(My Current Location).
+The Geocoding API converts the location entered by the user into latitude and longitude coordinates.
 
-The project displays:
+For example:
 
-- Current temperature
-- Minimum temperature
-- Maximum temperature
+```text
+Polokwane
+    ↓
+Latitude + Longitude
+```
 
-### DummyJSON
+These coordinates are then passed to the weather API.
 
-DummyJSON Posts is used to retrieve five post titles that are displayed as headlines for the purpose of demonstrating asynchronous API requests.
+### Open-Meteo Weather API
 
-The headlines are sample post data and should not be treated as live news.
+The weather API retrieves weather information using the latitude and longitude returned by the Geocoding API.
+
+The application displays:
+
+* Current temperature
+* Minimum temperature
+* Maximum temperature
+
+### DummyJSON Posts API
+
+DummyJSON provides sample post data.
+
+The application retrieves five post titles and displays them as headlines to demonstrate asynchronous API requests.
+
+The titles are sample post data and should not be treated as live news.
 
 ---
 
@@ -298,27 +471,27 @@ Through this project, I learned how asynchronous programming works in Node.js an
 
 ### Callbacks
 
-I learned how callback functions can be used to execute code after an asynchronous operation has completed.
+I learned how callbacks can be used to execute code after an asynchronous operation has completed.
 
-I also learned how nested callbacks can make code more difficult to read as the number of asynchronous operations increases.
+I also learned how nested callbacks can become harder to read when several asynchronous operations depend on each other.
 
 ### Promises
 
-I learned how Promises can make asynchronous operations easier to manage than nested callbacks.
+I learned how Promises provide a cleaner way to manage asynchronous operations compared with deeply nested callbacks.
 
-I learned how to use `.then()` and `.catch()` to handle successful and failed asynchronous operations.
+I learned how to use `.then()` to handle successful results and `.catch()` to handle errors.
 
 ### Promise.all()
 
-I learned that `Promise.all()` can start multiple asynchronous operations together and wait until all of them have completed successfully.
+I learned how `Promise.all()` can start multiple asynchronous operations together and wait for all of them to complete.
 
-In this project, it is used to fetch the weather and news data together.
+In this project, it is used to request weather and news data together.
 
 ### Promise.race()
 
-I learned that `Promise.race()` starts multiple Promises and returns the result of the first one that settles.
+I learned how `Promise.race()` starts multiple Promises and returns the result of whichever Promise settles first.
 
-In this project, the weather and news requests compete to finish first.
+In this project, weather and news compete to return the fastest response.
 
 ### Async/Await
 
@@ -326,31 +499,34 @@ I learned how `async` and `await` provide a cleaner and more readable way to wor
 
 I also learned how `try...catch` can be used to handle errors when using Async/Await.
 
-### Error Handling
+### API Integration
 
-I learned the importance of handling errors when working with external APIs.
+I learned how data from one API can be used when making a request to another API.
 
-The project provides readable error messages when weather or news data cannot be fetched or processed.
-
----
-
-## How the Project Demonstrates Asynchronous Programming
-
-The project performs tasks that depend on external API responses.
-
-Instead of stopping the entire program while waiting for the APIs to respond, Node.js handles these operations asynchronously.
-
-The same weather and news functionality is implemented using:
+For example:
 
 ```text
-Callbacks
-    ↓
-Promises
-    ↓
-Async/Await
+Location Name
+     ↓
+Geocoding API
+     ↓
+Coordinates
+     ↓
+Weather API
 ```
 
-This makes it possible to compare the different approaches and understand how asynchronous programming can be improved from callbacks to Promises and then to Async/Await.
+### TypeScript Interfaces
+
+I learned how interfaces can describe the structure of API data and make TypeScript code easier to understand and maintain.
+
+### Error Handling
+
+I learned how to handle errors that can happen when:
+
+* A location cannot be found
+* An API request fails
+* API data cannot be processed
+* The user does not enter a location
 
 ---
 
